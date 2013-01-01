@@ -7,7 +7,7 @@
 		<em:id>addonsRecentUpdates@infocatcher</em:id>
 		<em:type>2</em:type>
 		<em:name>Addons Recent Updates</em:name>
-		<em:version>0.1.3</em:version>
+		<em:version>0.1.4</em:version>
 		<em:description>Show more addons recent updates</em:description>
 		<em:creator>Infocatcher</em:creator>
 		<em:updateURL>http://infocatcher.ucoz.net/ext/fx/addons_recent_updates/update.rdf</em:updateURL>
