@@ -1,0 +1,3 @@
+content addonsrecentupdates .
+overlay about:addons chrome://addonsrecentupdates/content/addonsOverlay.xul
+overlay chrome://mozapps/content/extensions/extensions.xul chrome://addonsrecentupdates/content/addonsOverlay.xul

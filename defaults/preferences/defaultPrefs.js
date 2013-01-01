@@ -1,0 +1,1 @@
+pref("extensions.addonsRecentUpdates.days", 21);

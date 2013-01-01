@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script type="application/javascript">
+	<![CDATA[
+	window.addEventListener("DOMContentLoaded", function patch(e) {
+		window.removeEventListener(e.type, patch, false);
+		// We can't redeclare or change "const UPDATES_RECENT_TIMESPAN".
+		// But we can redeclare gUpdatesView._showRecentUpdates in scope with another UPDATES_RECENT_TIMESPAN.
+		const UPDATES_RECENT_TIMESPAN = Application.prefs.getValue("extensions.addonsRecentUpdates.days", 21)*24*3600000;
+		// We don't modify original function, so eval is safe.
+		eval("gUpdatesView._showRecentUpdates = " + gUpdatesView._showRecentUpdates.toString());
+	}, false);
+	]]>
+	</script>
+</overlay>
