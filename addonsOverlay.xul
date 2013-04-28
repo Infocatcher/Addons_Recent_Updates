@@ -9,7 +9,23 @@
 		// But we can redeclare gUpdatesView._showRecentUpdates in scope with another UPDATES_RECENT_TIMESPAN.
 		const UPDATES_RECENT_TIMESPAN = Application.prefs.getValue("extensions.addonsRecentUpdates.days", 21)*24*3600000;
 		// We don't modify original function, so eval is safe.
-		eval("gUpdatesView._showRecentUpdates = " + gUpdatesView._showRecentUpdates.toString());
+		var origShowRecentUpdates = gUpdatesView._showRecentUpdates;
+		eval("gUpdatesView._showRecentUpdates = " + origShowRecentUpdates.toString());
+		(function() { // Someone may want to do eval() patch...
+			var f = gUpdatesView._showRecentUpdates;
+			function patch(s) {
+				return s.replace(
+					/\{(?:\s*("|')use strict\1;)?/,
+					'$&\n\tvar UPDATES_RECENT_TIMESPAN = Application.prefs.getValue("extensions.addonsRecentUpdates.days", 21)*24*3600000;'
+				);
+			}
+			f.toString = function() {
+				return patch(origShowRecentUpdates.toString());
+			};
+			f.toSource = function() {
+				return patch(origShowRecentUpdates.toSource());
+			};
+		})();
 	}, false);
 	]]>
 	</script>
