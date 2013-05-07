@@ -7,7 +7,11 @@
 		// See chrome://mozapps/content/extensions/extensions.js
 		// We can't redeclare or change "const UPDATES_RECENT_TIMESPAN".
 		// But we can redeclare gUpdatesView._showRecentUpdates in scope with another UPDATES_RECENT_TIMESPAN.
-		const UPDATES_RECENT_TIMESPAN = Application.prefs.getValue("extensions.addonsRecentUpdates.days", 21)*24*3600000;
+		const UPDATES_RECENT_TIMESPAN = {
+			valueOf: function() { // Trick to always get actual value from preferences
+				return Application.prefs.getValue("extensions.addonsRecentUpdates.days", 21)*24*3600000;
+			}
+		};
 		// We don't modify original function, so eval is safe.
 		var origShowRecentUpdates = gUpdatesView._showRecentUpdates;
 		eval("gUpdatesView._showRecentUpdates = " + origShowRecentUpdates.toString());
