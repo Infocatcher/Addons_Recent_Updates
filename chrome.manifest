@@ -1,3 +1,6 @@
 content addonsrecentupdates ./
 overlay about:addons chrome://addonsrecentupdates/content/addonsOverlay.xul
 overlay chrome://mozapps/content/extensions/extensions.xul chrome://addonsrecentupdates/content/addonsOverlay.xul
+
+locale addonsrecentupdates en-US locale/en-US/
+locale addonsrecentupdates ru    locale/ru/
