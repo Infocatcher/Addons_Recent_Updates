@@ -7,7 +7,7 @@
 		<em:id>addonsRecentUpdates@infocatcher</em:id>
 		<em:type>2</em:type>
 		<em:name>Addons Recent Updates</em:name>
-		<em:version>0.1.6</em:version>
+		<em:version>0.1.7</em:version>
 		<em:description>Show more addons recent updates</em:description>
 		<em:creator>Infocatcher</em:creator>
 		<em:optionsURL>chrome://addonsrecentupdates/content/options.xul</em:optionsURL>
