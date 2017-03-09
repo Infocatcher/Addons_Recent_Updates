@@ -14,7 +14,15 @@
 		};
 		// We don't modify original function, so eval is safe.
 		var origShowRecentUpdates = gUpdatesView._showRecentUpdates;
-		eval("gUpdatesView._showRecentUpdates = " + origShowRecentUpdates.toString());
+		eval("gUpdatesView._showRecentUpdates = " + (function() { // Hide our variables from eval() scope
+			var src = origShowRecentUpdates.toString();
+			if(
+				origShowRecentUpdates.name
+				&& !/^function\s*\(/.test(src) // Not starts with "function ("
+			) // Looks like _showRecentUpdates(aRequest) { ... }
+				return "function " + src;
+			return src;
+		})());
 		(function() { // Someone may want to do eval() patch...
 			var f = gUpdatesView._showRecentUpdates;
 			function patch(s) {
