@@ -6,6 +6,8 @@
 `*` - improved<br>
 
 ##### master/HEAD
+`x` Fixed compatibility with Firefox 55+ (SyntaxError: missing ; before statement) (<a href="https://github.com/Infocatcher/Addons_Recent_Updates/issues/5">#5</a>).<br>
+
 ##### 0.1.7 (2016-02-11)
 `x` Fixed compatibility with Firefox 47+ (bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1090880">1090880</a>, <a href="https://github.com/Infocatcher/Addons_Recent_Updates/issues/3">#3</a>).<br>
 
