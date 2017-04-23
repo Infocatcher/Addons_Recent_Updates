@@ -18,7 +18,7 @@
 			var src = origShowRecentUpdates.toString();
 			if(
 				origShowRecentUpdates.name
-				&& !/^function[ (]/.test(src) // Not starts with "function"
+				&& !/^function[\s(]/.test(src) // Not starts with "function"
 			) // Looks like _showRecentUpdates(aRequest) { ... }
 				return "function " + src;
 			return src;
