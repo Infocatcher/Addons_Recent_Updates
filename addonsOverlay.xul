@@ -4,6 +4,15 @@
 	<![CDATA[
 	window.addEventListener("DOMContentLoaded", function patch(e) {
 		window.removeEventListener(e.type, patch, false);
+		try {
+			var defaultBranch = Services.prefs.getDefaultBranch("extensions.addonsRecentUpdates.days");
+			defaultBranch.getIntPref("");
+		}
+		catch(e) { // NS_ERROR_UNEXPECTED
+			// Firefox 58+: Remove support for extensions having their own prefs file
+			// https://bugzilla.mozilla.org/show_bug.cgi?id=1413413
+			defaultBranch.setIntPref("", 21);
+		}
 		// See chrome://mozapps/content/extensions/extensions.js
 		// We can't redeclare or change "const UPDATES_RECENT_TIMESPAN".
 		// But we can redeclare gUpdatesView._showRecentUpdates in scope with another UPDATES_RECENT_TIMESPAN.
